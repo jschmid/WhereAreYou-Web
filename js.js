@@ -18,6 +18,12 @@ function initialize() {
   var childname = href.substring(href.lastIndexOf("/") + 1);
   
   var f = new Firebase("https://whereareyou.firebaseio.com");
+  
+  if(childname == "") {
+    var child = f.push();
+    document.location = document.location + child.name();
+  }
+  
   var child = f.child(childname);
   myHandle = child.push();
   myHandle.removeOnDisconnect();
