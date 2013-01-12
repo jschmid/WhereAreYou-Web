@@ -47,7 +47,7 @@ function initialize() {
       var lat = position.lat;
       var longitude = position.long;
       var datetime = position.datetime;
-      var date = new Date(datetime * 1000);
+      var date = new Date(datetime);
       var parentName = sPosition.ref().parent().name();
       
       var myLatlng = new google.maps.LatLng(lat, longitude);
@@ -104,7 +104,7 @@ function initialize() {
 }
 
 function handleGeolocation(position) {
-  var ts = Math.round((new Date()).getTime() / 1000);
+  var ts = (new Date()).getTime();
   
   myPosition.set({
     "lat" : position.coords.latitude,
