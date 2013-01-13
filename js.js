@@ -9,6 +9,18 @@ var siberia = new google.maps.LatLng(60, 105);
 var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
 
 function initialize() {
+  
+  var f = new Firebase("https://whereareyou.firebaseio.com");
+  
+  var href = document.location.href;
+  var childname = href.substring(href.lastIndexOf("/") + 1);
+
+  if (childname == "") {
+    var child = f.push();
+    document.location = document.location + child.name();
+    return;
+  }
+  
   var mapOptions = {
     center : new google.maps.LatLng(46, 6),
     zoom : 8,
@@ -16,17 +28,6 @@ function initialize() {
     streetViewControl : false
   };
   map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-  
-  var href = document.location.href;
-  var childname = href.substring(href.lastIndexOf("/") + 1);
-  
-  var f = new Firebase("https://whereareyou.firebaseio.com");
-  
-  if (childname == "") {
-    var child = f.push();
-    document.location = document.location + child.name();
-    return;
-  }
   
   var child = f.child(childname);
   
