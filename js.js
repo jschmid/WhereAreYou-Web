@@ -104,11 +104,14 @@ function initialize() {
 }
 
 function handleGeolocation(position) {
+  console.log(position);
+
   var ts = (new Date()).getTime();
   
   myPosition.set({
     "lat" : position.coords.latitude,
     "long" : position.coords.longitude,
+    "accuracy" : position.coords.accuracy,
     "datetime" : ts
   });
   
