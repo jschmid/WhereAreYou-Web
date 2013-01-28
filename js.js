@@ -38,8 +38,6 @@ function initialize() {
     positionRef.on("value", function (sPosition) {
       var position = sPosition.val();
       
-      console.log(position);
-      
       if (position == null) {
         return;
       }
@@ -101,11 +99,11 @@ function initialize() {
     browserSupportFlag = false;
     handleNoGeolocation(browserSupportFlag);
   }
+  
+  
 }
 
 function handleGeolocation(position) {
-  console.log(position);
-
   var ts = (new Date()).getTime();
   
   myPosition.set({
@@ -128,4 +126,12 @@ function handleNoGeolocation(errorFlag) {
     initialLocation = siberia;
   }
   map.setCenter(initialLocation);
+}
+
+function showAndroidAd() {
+  var ua = navigator.userAgent.toLowerCase();
+  var isAndroid = ua.indexOf("android") > -1;
+  if(isAndroid) {
+    document.getElementById("play").display = "block";
+  }
 }
