@@ -19,11 +19,19 @@ initFirebase = ->
   firebase = new Firebase(FIREBASE_URL)
   
   href = document.location.href
-  roomname = href.substring(href.lastIndexOf("/") + 1)
-  room = firebase.child(roomname)
+  roomName = href.substring(href.lastIndexOf("/") + 1)
+  room = firebase.child(roomName)
   
-  myHandle = room.push()
-  myHandle.child("name").set("Web")
+  myKey = if localStorage? then localStorage[roomName]
+  
+  if myKey?
+    myHandle = room.child(myKey)
+  else
+    myHandle = room.push()
+    myHandle.child("name").set("Web")
+    if localStorage?
+      localStorage[roomName] = myHandle.name()
+    
   myPosition = myHandle.child(POSITION)
   
   room.on("child_added", childAdded)
