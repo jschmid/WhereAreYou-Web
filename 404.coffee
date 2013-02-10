@@ -42,7 +42,7 @@ initMap = ->
 initGeoloc = ->
 
   if navigator.geolocation
-    navigator.geolocation.getCurrentPosition(handleGeolocation, () ->
+    navigator.geolocation.watchPosition(handleGeolocation, () ->
       handleNoGeolocation(true);
     );
   
