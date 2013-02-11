@@ -1,4 +1,4 @@
-FIREBASE_URL = "https://whereareyou.firebaseio.com"
+FIREBASE_URL = "https://whereareyou.firebaseio.com/v1"
 POSITION = "position"
 
 myPosition = undefined

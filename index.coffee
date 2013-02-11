@@ -1,4 +1,4 @@
-FIREBASE_URL = "https://whereareyou.firebaseio.com"
+FIREBASE_URL = "https://whereareyou.firebaseio.com/v1"
 
 createRoom = -> 
   firebase = new Firebase(FIREBASE_URL)
