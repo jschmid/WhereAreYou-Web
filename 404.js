@@ -2,7 +2,7 @@
 (function() {
   var FIREBASE_URL, POSITION, childAdded, childRemoved, circles, handleGeolocation, handleNoGeolocation, initFirebase, initGeoloc, initMap, initialize, map, markers, myPosition, newyork, positionCallback, showAndroidAd, siberia;
 
-  FIREBASE_URL = "https://whereareyou.firebaseio.com";
+  FIREBASE_URL = "https://whereareyou.firebaseio.com/v1";
 
   POSITION = "position";
 
