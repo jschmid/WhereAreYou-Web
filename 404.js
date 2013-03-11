@@ -80,14 +80,13 @@
   childAdded = function(snapshot) {
     var person, personName, positionRef;
     person = snapshot.val();
+    console.log(person);
     personName = person.name;
     positionRef = snapshot.ref().child(POSITION);
     return positionRef.on("value", positionCallback(personName));
   };
 
   positionCallback = function(personName) {
-    var theName;
-    theName = personName;
     return function(snapshot) {
       var accuracy, circle, circleOptions, contentString, date, datetime, infowindow, latitude, longitude, marker, myLatLng, parentName, position;
       position = snapshot.val();
@@ -106,10 +105,10 @@
         marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
-          title: theName,
+          title: personName,
           animation: google.maps.Animation.DROP
         });
-        contentString = '<div id="content">' + '<h1 id="firstHeading" class="firstHeading">' + theName + '</h1>' + '<div id="bodyContent">' + date + '</div>' + '</div>';
+        contentString = '<div id="content">' + '<h1 id="firstHeading" class="firstHeading">' + personName + '</h1>' + '<div id="bodyContent">' + date + '</div>' + '</div>';
         infowindow = new google.maps.InfoWindow({
           content: contentString
         });
