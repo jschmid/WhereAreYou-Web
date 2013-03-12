@@ -32,6 +32,8 @@
     roomName = href.substring(href.lastIndexOf("/") + 1);
     room = firebase.child(roomName);
     myKey = typeof localStorage !== "undefined" && localStorage !== null ? localStorage[roomName] : void 0;
+    room.on("child_added", childAdded);
+    room.on("child_removed", childRemoved);
     if (myKey != null) {
       myHandle = room.child(myKey);
     } else {
@@ -41,9 +43,7 @@
         localStorage[roomName] = myHandle.name();
       }
     }
-    myPosition = myHandle.child(POSITION);
-    room.on("child_added", childAdded);
-    return room.on("child_removed", childRemoved);
+    return myPosition = myHandle.child(POSITION);
   };
 
   initMap = function() {
