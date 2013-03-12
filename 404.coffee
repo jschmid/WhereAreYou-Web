@@ -1,6 +1,7 @@
 FIREBASE_URL = "https://whereareyou.firebaseio.com/v1"
 POSITION = "position"
 
+myKey = undefined
 myPosition = undefined
 map = undefined
 markers = {}
@@ -12,7 +13,6 @@ newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687)
 initialize = ->
   initFirebase()
   initMap()
-  initGeoloc()
   showAndroidAd()
 
 initFirebase = ->
@@ -29,8 +29,9 @@ initFirebase = ->
   else
     myHandle = room.push()
     myHandle.child("name").set("Web")
+    myKey = myHandle.name()
     if localStorage?
-      localStorage[roomName] = myHandle.name()
+      localStorage[roomName] = myKey
     
   myPosition = myHandle.child(POSITION)
   
@@ -67,9 +68,12 @@ showAndroidAd = ->
 childAdded = (snapshot) ->
   person = snapshot.val()
   personName = person.name
-  positionRef = snapshot.ref().child(POSITION)
   
+  positionRef = snapshot.ref().child(POSITION)
   positionRef.on("value", positionCallback(personName))
+  
+  if snapshot.ref().name() == myKey
+    initGeoloc()
   
 positionCallback = (personName) ->
   (snapshot) ->
