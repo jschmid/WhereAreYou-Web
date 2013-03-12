@@ -84,11 +84,11 @@
     person = snapshot.val();
     console.log(person);
     personName = person.name;
-    if (snapshot.parent().name() === myKey) {
-      initGeoloc();
-    }
     positionRef = snapshot.ref().child(POSITION);
-    return positionRef.on("value", positionCallback(personName));
+    positionRef.on("value", positionCallback(personName));
+    if (snapshot.ref().name() === myKey) {
+      return initGeoloc();
+    }
   };
 
   positionCallback = function(personName) {
