@@ -82,7 +82,6 @@
   childAdded = function(snapshot) {
     var person, personName, positionRef;
     person = snapshot.val();
-    console.log(person);
     personName = person.name;
     positionRef = snapshot.ref().child(POSITION);
     positionRef.on("value", positionCallback(personName));
