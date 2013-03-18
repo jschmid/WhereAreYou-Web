@@ -20,7 +20,11 @@ body {
   width: 100%;
 }
 
-#play img {
+#close {
+  float: right;
+}
+
+#icon {
   float:right;
 }
 
