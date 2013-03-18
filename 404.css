@@ -26,6 +26,7 @@ body {
 
 #icon {
   float:right;
+  padding-right: 10px;
 }
 
 #play a {

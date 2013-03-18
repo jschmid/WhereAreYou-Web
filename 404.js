@@ -71,11 +71,25 @@
   };
 
   showAndroidAd = function() {
-    var isAndroid, ua;
+    var closeAd, isAndroid, ua;
     ua = navigator.userAgent.toLowerCase();
     isAndroid = ua.indexOf("android") > -1;
-    if (isAndroid) {
-      return document.getElementById("play").display = "block";
+    if (true) {
+      closeAd = function(e) {
+        if (!(e != null)) {
+          e = window.event;
+        }
+        e.cancelBubble = true;
+        if (e.stopPropagation != null) {
+          e.stopPropagation();
+        }
+        if (e.preventDefault != null) {
+          e.preventDefault();
+        }
+        return document.getElementById("play").style.display = "none";
+      };
+      document.getElementById("play").style.display = "block";
+      return document.getElementById("close").addEventListener('click', closeAd, false);
     }
   };
 
