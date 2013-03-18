@@ -74,7 +74,7 @@
     var closeAd, isAndroid, ua;
     ua = navigator.userAgent.toLowerCase();
     isAndroid = ua.indexOf("android") > -1;
-    if (true) {
+    if (isAndroid) {
       closeAd = function(e) {
         if (!(e != null)) {
           e = window.event;
