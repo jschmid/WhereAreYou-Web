@@ -63,7 +63,19 @@ showAndroidAd = ->
   isAndroid = ua.indexOf("android") > -1
   
   if isAndroid
-    document.getElementById("play").display = "block"
+    closeAd = (e) ->
+      if not e?
+        e = window.event
+      e.cancelBubble = true
+      if e.stopPropagation?
+        e.stopPropagation()
+      if e.preventDefault?
+        e.preventDefault()
+        
+      document.getElementById("play").style.display = "none"
+      
+    document.getElementById("play").style.display = "block"
+    document.getElementById("close").addEventListener('click', closeAd, false);
 
 childAdded = (snapshot) ->
   person = snapshot.val()

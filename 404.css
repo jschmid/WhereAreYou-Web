@@ -15,14 +15,25 @@ body {
 #play {
   background:red;
   display:none;
-  padding:5px;
+  position: absolute;
+  z-index: 9999;
+  width: 100%;
 }
 
-#play img {
+#close {
+  float: right;
+}
+
+#icon {
   float:right;
+  padding-right: 10px;
 }
 
 #play a {
   text-decoration:none;
   color:#000;
+}
+
+#play-container {
+  padding: 5px;
 }
