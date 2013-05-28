@@ -1,5 +1,6 @@
 FIREBASE_URL = "https://whereareyou.firebaseio.com/v1"
 POSITION = "position"
+MAX_ACCURACY = 500
 
 myKey = undefined
 myPosition = undefined
@@ -100,6 +101,8 @@ positionCallback = (personName) ->
     parentName = snapshot.ref().parent().name()
     
     myLatLng = new google.maps.LatLng(latitude, longitude)
+    
+    accuracy = MAX_ACCURACY if accuracy > MAX_ACCURACY
     
     marker = markers[parentName]
     
