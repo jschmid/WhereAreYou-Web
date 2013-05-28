@@ -4,6 +4,8 @@ The Web version of WhereAreYou.
 
 You can access it from http://w.schmid.pro.
 
+Do your work in a local `dev` branch.
+
 # Publishing
 
     git checkout dev
