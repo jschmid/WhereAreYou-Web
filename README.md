@@ -10,3 +10,6 @@ Do your work in a local `dev` branch.
     git merge dev
     ./publish.sh
   
+# License
+
+MIT. See [LICENSE file](LICENSE).
