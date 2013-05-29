@@ -1,14 +1,12 @@
 # WhereAreYou-Web
 
-The Web version of WhereAreYou.
-
-You can access it from http://w.schmid.pro.
-
-Do your work in a local `dev` branch.
+The Web version of [WhereAreYou](http://jschmid.github.io/WhereAreYou/). You can access it from [http://w.schmid.pro](http://w.schmid.pro).
 
 # Publishing
 
-    git checkout dev
-    source publish.sh
+Do your work in a local `dev` branch.
+
+    git checkout master
+    git merge dev
+    ./publish.sh
   
-Do not use `./publish.sh` because the file itself is changed by Git while publishing.
